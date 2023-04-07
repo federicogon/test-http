@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/cats/list', [\App\Http\Controllers\Cats::class, 'list']);
+Route::get('/cats/clear', [\App\Http\Controllers\Cats::class, 'clear']);
