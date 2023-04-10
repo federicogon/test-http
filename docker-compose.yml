@@ -4,7 +4,7 @@ services:
   http:
     image: httpd:alpine
     ports:
-      - "80:80"
+      - "8000:80"
 
     volumes:
       - ./public:/app/public
@@ -15,8 +15,3 @@ services:
       - "APACHE_DOCUMENT_ROOT=/app/public"
     volumes:
       - ./:/app
-
-networks:
-  default:
-    external:
-      name: test-http
