@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  http:
+    image: httpd:alpine
+    ports:
+      - "80:80"
+
+    volumes:
+      - ./public:/app/public
+      - ./etc/conf:/usr/local/apache2/conf
+  php-fpm:
+    image: php:fpm-alpine3.17
+    environment:
+      - "APACHE_DOCUMENT_ROOT=/app/public"
+    volumes:
+      - ./:/app
+
+networks:
+  default:
+    external:
+      name: test-http
